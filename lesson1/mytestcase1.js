@@ -1,40 +1,33 @@
 /* jshint -W097 */
 
-'use strict';
+'user strict';
 
 var should = require('chai').should();
 var assert = require('assert');
-var User = require('./model.js');
+var oUser = require('./model.js');
 
-describe('Describe User Object', function(){
-  var user = new User('test@mail.com');
+describe('Set up proper user object', function () {
+ var user = new oUser('email');
 
-  describe('Required arguments', function(){
+ describe('Required arguments', function () {
+  function CreateNewUser() {
+   return new oUser();
+  };
 
-   function CreateNewUser(){
-    return new User();
-   }
-
-   it('Arguements as null results in error', function(){
-    assert.throws(CreateNewUser, Error, '');
-   });
+  it('ER1 - missing required arguments', function () {
+   assert.throws(CreateNewUser, Error, '');
   });
+ });
 
- describe('Default Values are set properly', function(){
-  it('Name should be empty when new user', function(){
+ describe('Default values are set properly', function () {
+  it('User name and city should be empty when new user', function () {
    user.name.should.be.empty;
+   user.city.should.be.empty;
   });
-  it('City should have a default of Irving', function(){
-   user.city.should.be.equal('Irving');
+
+  it('State should be set to TX by default', function () {
+   user.state.should.be.equal('TX');
   });
  });
 
- describe('Setting Data Values', function(){
-  it('Should let me set the name to be Daniel', function(){
-   user.name = 'Daniel';
-   user.name.should.be.equal('Daniel');
-  });
- });
 });
-
-

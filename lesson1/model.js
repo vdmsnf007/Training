@@ -2,15 +2,18 @@
 
 var assert = require('assert');
 
-var Model=function(email){
+
+Model = function (email) {
 	assert.ok(email, 'Email is Required');
 
-	var user={};
-	user.name='';
-	user.city='Irving';
-	user.email=email;
+	var user = {};
+
+	user.name = '';
+	user.city = '';
+	user.email = email;
+	user.state = 'TX';
 
 	return user;
-};
+}
 
-module.exports=Model;
+module.exports = Model;
